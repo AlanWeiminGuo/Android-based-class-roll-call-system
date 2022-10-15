@@ -1,4 +1,4 @@
-# Design-and-Implementation-of-Class-Roll-Call-System-based-on-Android-Platform
+# Android-based class roll-call system	
  
 The front-end of the system is an Android app, the back-end uses the SSM framework in the Eclipse platform for the architecture, and the database uses MySQL to complete the relevant operations. The system has two user identities, student and teacher, with different functions for students and teachers. The system is divided into six modules: registration and login, course management, roll call, user information management, number of missed classes and class exercise results.
 
