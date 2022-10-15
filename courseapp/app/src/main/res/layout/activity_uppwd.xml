@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary">
+
+
+        <LinearLayout
+            android:id="@+id/lin_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/im_back"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:text="修改密码"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/old_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="旧密码"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/edColor"
+            android:background="@null"
+            android:text=""
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/linColor"/>
+
+        <EditText
+            android:id="@+id/user_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="新密码"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/edColor"
+            android:password="true"
+            android:background="@null"
+            android:text=""
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/linColor"/>
+
+        <EditText
+            android:id="@+id/user_newpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="确认新密码"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/edColor"
+            android:password="true"
+            android:background="@null"
+            android:text=""
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/linColor"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="修改"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rect_gray"/>
+    </LinearLayout>
+</LinearLayout>

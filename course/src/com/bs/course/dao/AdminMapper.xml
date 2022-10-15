@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.course.dao.AdminMapper" >
+	<insert id="saveStudent" parameterType="Student">
+		insert into t_student(id,studentId,name,sex,phone,head,password)
+		values(#{id},#{studentId},#{name},#{sex},#{phone},#{head},#{password})
+	</insert>
+	
+	<select id="getStudent" parameterType="Map" resultType="Student">
+		select * from t_student where 1=1 
+		<if test="id != null"> and id=#{id}</if>
+		<if test="studentId != null"> and studentId=#{studentId}</if>
+		<if test="password != null"> and password=#{password}</if>
+	</select>
+
+	<select id="student_list" parameterType="Map" resultType="Student">
+		select * from t_student where 1=1
+		<if test="studentId != null and studentId != ''">
+			and studentId LIKE concat('%',#{studentId},'%')
+		</if>
+		<if test="name != null and name != ''">
+			and name LIKE concat('%',#{name},'%')
+		</if>
+		<if test="sex != null and sex !=''"> and sex=#{sex}</if>
+		<if test="offset != null and limit != null"> limit #{offset},#{limit}</if>
+	</select>
+	
+	<select id="student_list1" parameterType="Map" resultType="Student">
+		select * from t_student where 1=1
+		<if test="studentId != null and studentId != ''">
+			and studentId LIKE concat('%',#{studentId},'%')
+		</if>
+		<if test="name != null and name != ''">
+			and name LIKE concat('%',#{name},'%')
+		</if>
+		<if test="sex != null and sex !=''"> and sex=#{sex}</if>
+	</select>
+	
+	<delete id="delastudent" parameterType="Student">
+		delete from t_student where id=#{id}
+	</delete>
+	
+	
+	<sql id="updateDataColumns">
+            <if test="studentId != null">
+                studentId = #{studentId},
+			</if>
+			<if test="name != null">
+                name = #{name},
+			</if>
+			<if test="sex != null">
+                sex = #{sex},
+			</if>
+			<if test="phone != null">
+                phone = #{phone},
+			</if>
+			<if test="head != null">
+                head = #{head},
+			</if>
+	 </sql>
+
+	
+	 <update id="upinfo">
+		UPDATE t_student
+		<set>
+			<include refid="updateDataColumns" />
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	
+	
+
+	<select id="stquekecishu" parameterType="Map" resultType="int">
+		select count(distinct t_coursest.id) from t_coursest,t_course 
+		where t_coursest.state="未签到"  and t_course.courseName LIKE concat('%',#{course_name},'%')
+	and t_coursest.studentId = #{studentId}
+	
+	
+	</select>
+
+
+<insert id="tregister" parameterType="Teacher">
+		insert into t_teacher(id,jobNumber,name,sex,rank,phone,head,password)
+		values(#{id},#{id},#{name},#{sex},#{rank},#{phone},#{head},#{password})
+	
+	
+	</insert>
+	
+	
+	<insert id="stregister" parameterType="Student">
+		insert into t_student(id,studentId,name,sex,phone,head,password)
+		values(#{id},#{id},#{name},#{sex},#{phone},#{head},#{password})
+	
+	
+	</insert>
+	
+
+	
+	
+	
+	<sql id="updatepasswrod">
+		<if test="password != null">
+            password = #{password},
+		</if>
+	</sql>
+	<update id="uppasswrod" parameterType="Map">
+		UPDATE t_student
+		<set>
+			<include refid="updatepasswrod" />
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<insert id="addteacher" parameterType="Teacher">
+		insert into t_teacher(id,jobNumber,name,sex,rank,phone,password,head)
+		values(#{id},#{jobNumber},#{name},#{sex},#{rank},#{phone},#{password},#{head})
+	</insert>
+	
+	<update id="uppasswrod1" parameterType="Map">
+		UPDATE t_teacher
+		<set>
+			<include refid="updatepasswrod" />
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<sql id="updateDataColumns1">
+			<if test="name != null">
+                name = #{name},
+			</if>
+			<if test="sex != null">
+                sex = #{sex},
+			</if>
+			<if test="rank != null">
+                rank = #{rank},
+			</if>
+			<if test="phone != null">
+                phone = #{phone},
+			</if>
+			<if test="head != null">
+                head = #{head},
+			</if>
+	 </sql>
+	
+	 <update id="tupinfo">
+		UPDATE t_teacher
+		<set>
+			<include refid="updateDataColumns1" />
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<select id="getTeacher" parameterType="Map" resultType="Teacher">
+		select * from t_teacher where 1=1 
+		<if test="id != null"> and id=#{id}</if>
+		<if test="jobNumber != null"> and jobNumber=#{jobNumber}</if>
+		<if test="password != null"> and password=#{password}</if>
+	</select>
+	
+	
+	<select id="teacher_list" parameterType="Map" resultType="Teacher">
+		select * from t_teacher where 1=1
+		<if test="jobNumber != null and jobNumber != ''">
+			and jobNumber LIKE concat('%',#{jobNumber},'%')
+		</if>
+		<if test="name != null and name != ''">
+			and name LIKE concat('%',#{name},'%')
+		</if>
+		<if test="sex != null and sex !=''"> and sex=#{sex}</if>
+		<if test="rank != null and rank !=''"> and rank=#{rank}</if>
+		<if test="offset != null and limit != null"> limit #{offset},#{limit}</if>
+	</select>
+	
+	<select id="teacher_list1" parameterType="Map" resultType="Teacher">
+		select * from t_teacher where 1=1
+		<if test="jobNumber != null and jobNumber != ''">
+			and jobNumber LIKE concat('%',#{jobNumber},'%')
+		</if>
+		<if test="name != null and name != ''">
+			and name LIKE concat('%',#{name},'%')
+		</if>
+		<if test="sex != null and sex !=''"> and sex=#{sex}</if>
+		<if test="rank != null and rank !=''"> and rank=#{rank}</if>
+	</select>
+	
+	<delete id="delateacher" parameterType="Teacher">
+		delete from t_teacher where id=#{id}
+	</delete>
+	
+</mapper>

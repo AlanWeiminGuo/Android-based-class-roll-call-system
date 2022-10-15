@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary">
+
+
+        <LinearLayout
+            android:id="@+id/lin_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/im_back" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="签到"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_courseName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="6dp"
+                        android:text=""
+                        android:textColor="@color/edColor"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_kcdescribe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="5dp"
+                        android:text=""
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_qd"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/circle_shape"
+            android:text="签到"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:id="@+id/tv_ckcj"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/circle_shape"
+            android:text="查看成绩"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15sp"/>
+</LinearLayout>

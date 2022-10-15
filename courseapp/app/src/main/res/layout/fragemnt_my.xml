@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ebebeb">
+
+    <RelativeLayout
+        android:id="@+id/rel_t"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:text="个人资料"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_bg01" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:drawableRight="@mipmap/arrow"
+        android:padding="15dp"
+        android:text="个人资料"
+        android:textColor="#666666"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_mykt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:drawableRight="@mipmap/arrow"
+        android:padding="15dp"
+        android:layout_marginTop="3dp"
+        android:text="我的课堂"
+        android:textColor="#666666"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_edpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:drawableRight="@mipmap/arrow"
+        android:padding="15dp"
+        android:layout_marginTop="3dp"
+        android:text="修改密码"
+        android:textColor="#666666"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/st_quekecishu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:drawableRight="@mipmap/arrow"
+        android:padding="15dp"
+        android:layout_marginTop="3dp"
+        android:text="缺课次数查询"
+        android:textColor="#666666"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/but_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:background="#ff0000"
+        android:text="退出登录"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+</LinearLayout>

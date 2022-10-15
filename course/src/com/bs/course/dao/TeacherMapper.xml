@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.course.dao.TeacherMapper" >
+	<insert id="addcourse" parameterType="Course">
+		insert into t_course(id,courseName,state,teacherId,kcdescribe)
+		values(#{id},#{courseName},#{state},#{teacherId},#{kcdescribe})
+	</insert>
+	
+	<insert id="addstudent" parameterType="CourseSt">
+		insert into t_coursest(id,courseId,studentId,state)
+		values(#{id},#{courseId},#{studentId},#{state})
+	</insert>
+	
+	<select id="getCoursest" parameterType="Map" resultType="CourseSt">
+		select * from t_coursest where 1=1
+		<if test="studentId != null"> and studentId=#{studentId}</if>
+		<if test="courseId != null"> and courseId=#{courseId}</if>
+	</select>
+	
+	<select id="getCourse" parameterType="Map" resultType="Course">
+		select * from t_course where 1=1
+		<if test="id != null"> and id=#{id}</if>
+	</select>
+	
+	<select id="course_stlist" parameterType="Map" resultType="CourseSt">
+		select * from t_coursest where 1=1
+		<if test="courseId != null"> and courseId=#{courseId}</if>
+		<if test="offset != null and limit != null"> limit #{offset},#{limit}</if>
+	</select>
+	
+	<select id="course_stlist1" parameterType="Map" resultType="CourseSt">
+		select * from t_coursest where 1=1
+		<if test="courseId != null"> and courseId=#{courseId}</if>
+		<if test="studentId != null"> and studentId=#{studentId}</if>
+	</select>
+
+	 <select id="course_list" parameterType="Map" resultType="Course">
+		select * from t_course where 1=1
+		<if test="teacherId != null and teacherId != ''">
+			and teacherId LIKE concat('%',#{teacherId},'%')
+		</if>
+		<if test="courseName != null and courseName != ''">
+			and courseName LIKE concat('%',#{courseName},'%')
+		</if>
+		<if test="state != null and state != ''">
+			and state LIKE concat('%',#{state},'%')
+		</if>
+		<if test="offset != null and limit != null"> limit #{offset},#{limit}</if>
+	</select>
+	
+	<select id="course_list1" parameterType="Map" resultType="Course">
+		select * from t_course where 1=1
+		<if test="teacherId != null and teacherId != ''">
+			and teacherId LIKE concat('%',#{teacherId},'%')
+		</if>
+		<if test="courseName != null and courseName != ''">
+			and courseName LIKE concat('%',#{courseName},'%')
+		</if>
+		<if test="state != null and state != ''">
+			and state LIKE concat('%',#{state},'%')
+		</if>
+	</select>
+	
+	<delete id="delacourse" parameterType="Course">
+		delete from t_course where id=#{id}
+	</delete>
+	
+	<sql id="updatsk">
+		<if test="state != null">
+            state = #{state},
+		</if>
+	</sql>
+	
+	<update id="updatsks" parameterType="Map">
+		UPDATE t_course
+		<set>
+			<include refid="updatsk" />
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	
+		<select id="tquekecishu" parameterType="Map" resultType="int">
+		select count( distinct t_coursest.id) from t_coursest,t_course 
+		where t_coursest.state="未签到"  and t_course.courseName LIKE concat('%',#{course_name},'%')
+	and t_coursest.studentId = #{studentId} and t_course.teacherId = #{teacherId}
+	
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="quekelvcount" parameterType="Map" resultType="int">
+		select count(distinct courseName) from t_coursest,t_course 
+		where  t_course.courseName LIKE concat('%',#{course_name},'%')
+	 and t_course.teacherId = #{teacherId}
+	
+	
+	</select>
+	
+	
+	
+	<select id="tquekelv" parameterType="Map" resultType="String">
+
+
+select distinct t_course.courseName from t_coursest,t_course
+		where  t_course.courseName LIKE concat('%',#{course_name},'%')
+	and t_course.teacherId = #{teacherId} LIMIT #{count},#{limit}
+
+	
+	</select>
+	
+	<select id="quekelvunsign" parameterType="Map" resultType="int">
+	
+
+select count(t_coursest.studentId) from t_coursest , t_course 
+		where t_course.teacherId = #{teacherId} and  t_course.courseName LIKE concat('%',#{course_name},'%') 
+		and t_coursest.state="未签到" and t_course.id = t_coursest.courseId
+
+	
+	</select>
+	
+	<select id="quekelvall" parameterType="Map" resultType="int">
+		
+select count(DISTINCT t_coursest.studentId)from t_coursest ,t_course 
+		where t_course.teacherId = #{teacherId} and  t_course.courseName LIKE concat('%',#{course_name},'%') 
+	and t_course.id = t_coursest.courseId
+	
+	</select>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	<update id="qiandaochange" parameterType="Map">
+		update t_coursest set state="已签到" where courseId=#{courseId} and studentId=#{studentId}
+	</update>
+	
+	
+	<update id="qd" parameterType="Map">
+		update t_coursest set state=#{state} where courseId=#{courseId} and studentId=#{studentId}
+	</update>
+	
+	<insert id="addcj" parameterType="Chengji">
+		insert into t_cj(id,courseId,studentId,studentcj)
+		values(#{id},#{courseId},#{studentId},#{studentcj})
+	</insert> 
+	
+	<select id="st_cjlist" parameterType="Map" resultType="Chengji">
+		select * from t_cj where 1=1
+		<if test="courseId != null and courseId !=''"> and courseId=#{courseId}</if>
+		<if test="studentId != null and studentId !=''"> and studentId=#{studentId}</if>
+		<if test="offset != null and limit != null"> limit #{offset},#{limit}</if>
+	</select> 
+	
+	<select id="st_cjlist1" parameterType="Map" resultType="Chengji">
+		select * from t_cj where 1=1
+		<if test="courseId != null and Id !=''"> and courseId=#{courseId}</if>
+		<if test="studentId != null and studentId !=''"> and studentId=#{studentId}</if>
+	</select> 
+	
+	
+	<select id="getcj" parameterType="Map" resultType="Chengji">
+		select * from t_cj where 1=1
+		<if test="courseId != null and courseId !=''"> and courseId=#{courseId}</if>
+		<if test="studentId != null and studentId !=''"> and studentId=#{studentId}</if>
+	</select>
+	
+</mapper>
